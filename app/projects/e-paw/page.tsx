@@ -125,16 +125,16 @@ export default function EPawPage() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_20%,rgba(94,167,160,0.18),transparent_32%),radial-gradient(circle_at_78%_80%,rgba(232,169,107,0.15),transparent_34%)]" />
 
             <Phone
-              src="/epaw/epaw-login.png"
+              src="/epaw/epaw-login.PNG"
               className="absolute left-8 top-20 w-[29%] rotate-[-8deg]"
             />
             <Phone
-              src="/epaw/epaw-home.png"
+              src="/epaw/epaw-home.PNG"
               className="absolute left-[33%] top-8 z-20 w-[34%]"
               priority
             />
             <Phone
-              src="/epaw/epaw-pet-details.png"
+              src="/epaw/epaw-pet-details.PNG"
               className="absolute bottom-14 right-8 w-[30%] rotate-[8deg]"
             />
 
@@ -187,7 +187,7 @@ export default function EPawPage() {
             className="lg:col-span-6"
             title="Access"
             text="Login and registration screens create the entry point for owners and users."
-            images={["/epaw/epaw-login.png", "/epaw/epaw-register.png"]}
+            images={["/epaw/epaw-login.PNG", "/epaw/epaw-register.PNG"]}
           />
 
           <ShowcaseBlock
@@ -195,9 +195,9 @@ export default function EPawPage() {
             title="Pet Health"
             text="Home, pet list and detail screens help users follow pet records and health context."
             images={[
-              "/epaw/epaw-home.png",
-              "/epaw/epaw-pets.png",
-              "/epaw/epaw-pet-details.png",
+              "/epaw/epaw-home.PNG",
+              "/epaw/epaw-pets.PNG",
+              "/epaw/epaw-pet-details.PNG",
             ]}
           />
 
@@ -206,8 +206,8 @@ export default function EPawPage() {
             title="Appointments"
             text="Appointment screens support care planning and veterinary follow-up moments."
             images={[
-              "/epaw/epaw-appointments.png",
-              "/epaw/epaw-new-appointment.png",
+              "/epaw/epaw-appointments.PNG",
+              "/epaw/epaw-new-appointment.PNG",
             ]}
           />
 
@@ -216,8 +216,8 @@ export default function EPawPage() {
             title="Adoption"
             text="Adoption screens introduce matching-oriented flows for more suitable outcomes."
             images={[
-              "/epaw/epaw-adoption-intro.png",
-              "/epaw/epaw-adoption-flow.png",
+              "/epaw/epaw-adoption-intro.PNG",
+              "/epaw/epaw-adoption-flow.PNG",
             ]}
           />
         </div>

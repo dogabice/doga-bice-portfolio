@@ -24,9 +24,9 @@ const projects = [
     description:
       "Pet health tracking with vaccine recognition and matching logic.",
     images: [
-      "/epaw/epaw-login.png",
-      "/epaw/epaw-home.png",
-      "/epaw/epaw-pet-details.png",
+      "/epaw/epaw-login.PNG",
+      "/epaw/epaw-home.PNG",
+      "/epaw/epaw-pet-details.PNG",
     ],
     tags: ["React Native", "Firebase", "YOLOv8"],
   },
