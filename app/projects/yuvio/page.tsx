@@ -4,76 +4,75 @@ import ScreenCarousel from "@/components/project/screen-carousel";
 import {
   ArrowLeft,
   ArrowRight,
-  BrainCircuit,
-  CalendarDays,
+  Bell,
   Database,
-  HeartHandshake,
-  ScanLine,
+  Filter,
+  Heart,
+  MessageCircle,
+  Search,
   ShieldCheck,
+  Smartphone,
   Sparkles,
-  Stethoscope,
-  Syringe,
 } from "lucide-react";
 
 const features = [
   {
-    icon: Stethoscope,
-    title: "Digital pet profile",
-    text: "Owners can keep pet identity, health and care details in one accessible mobile profile.",
+    icon: Search,
+    title: "Discovery-first flow",
+    text: "A feed experience where adopters can browse pets through clear cards, categories and search.",
   },
   {
-    icon: Syringe,
-    title: "Vaccination tracking",
-    text: "Health records and vaccination history are organized to reduce dependency on paper-based tracking.",
+    icon: Filter,
+    title: "Soft filtering UX",
+    text: "A filter modal for pet type, breed, city, age and sorting without making the interface feel heavy.",
   },
   {
-    icon: CalendarDays,
-    title: "Appointments",
-    text: "Appointment flows help owners follow upcoming veterinary visits and care moments.",
+    icon: Heart,
+    title: "Favorites",
+    text: "Users can save pets they are interested in and revisit them through a dedicated favorites flow.",
   },
   {
-    icon: ScanLine,
-    title: "Sticker recognition",
-    text: "AI-assisted vaccine sticker recognition supports faster health record updates.",
+    icon: MessageCircle,
+    title: "Listing-based messaging",
+    text: "Conversations are connected to a specific listing so the adoption context stays clear.",
   },
   {
-    icon: HeartHandshake,
-    title: "Adoption matching",
-    text: "Matching logic considers compatibility between pets and potential adopters.",
+    icon: Bell,
+    title: "Notifications",
+    text: "Important actions such as favorites and messages are surfaced with a simple activity system.",
   },
   {
     icon: ShieldCheck,
-    title: "Care coordination",
-    text: "The product idea connects owners, veterinarians and adoption flows around responsible care.",
+    title: "Owner tools",
+    text: "Owners can manage listings, track active/adopted status and understand listing performance.",
   },
 ];
 
 const stack = [
   "React Native",
   "Expo",
-  "Firebase Auth",
-  "Firestore",
-  "Python",
-  "Flask API",
-  "YOLOv8",
-  "OpenCV",
+  "TypeScript",
+  "Supabase Auth",
+  "Supabase Database",
+  "Realtime Channels",
+  "Product Design",
   "Figma",
 ];
 
 const technical = [
-  "Firebase authentication and user profiles",
-  "Firestore-based pet and health records",
-  "Appointment and care flow management",
-  "YOLO-based vaccine sticker detection",
-  "Flask API integration for image processing",
-  "Preference-based adoption matching logic",
+  "Authentication and profile completion flow",
+  "Realtime messaging between adopters and owners",
+  "Favorites and notification data model",
+  "Owner listing management and status updates",
+  "Dynamic filters for discovery",
+  "Reusable mobile UI components",
 ];
 
-export default function EPawPage() {
+export default function YuvioPage() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#130D12] text-[#F6EFE8]">
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(94,167,160,0.18),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(232,169,107,0.12),transparent_30%),radial-gradient(circle_at_45%_78%,rgba(199,92,124,0.12),transparent_38%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(199,92,124,0.18),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(232,169,107,0.12),transparent_30%),radial-gradient(circle_at_45%_78%,rgba(94,167,160,0.12),transparent_38%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(19,13,18,0.50)_76%)]" />
       </div>
 
@@ -88,27 +87,26 @@ export default function EPawPage() {
 
         <div className="grid gap-14 pt-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
-            <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-[#5EA7A0]/25 bg-[#5EA7A0]/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.24em] text-[#5EA7A0]">
+            <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-[#E8A96B]/20 bg-[#E8A96B]/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.24em] text-[#E8A96B]">
               <Sparkles className="h-4 w-4" />
-              AI + Pet Health
+              Featured Case Study
             </div>
 
             <p className="text-xs uppercase tracking-[0.34em] text-[#C75C7C]">
-              Mobile health and adoption system
+              Mobile adoption platform
             </p>
 
             <h1 className="mt-5 text-[4rem] font-semibold leading-[0.9] tracking-[-0.075em] md:text-[6.4rem]">
-              E-Paw
+              Yuvio
             </h1>
 
             <p className="mt-7 max-w-xl text-[17px] leading-8 text-[#CFC3CB]">
-              An AI-supported pet health tracking and adoption platform designed
-              to digitize pet records, improve care coordination and create more
-              thoughtful adoption matches.
+              A warm mobile pet adoption platform designed around trust,
+              discovery, messaging and owner-side listing management.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              {["Mobile App", "AI Recognition", "Pet Health", "Firebase"].map(
+              {["Mobile App", "Product Design", "Realtime", "Supabase"].map(
                 (tag) => (
                   <span
                     key={tag}
@@ -122,25 +120,25 @@ export default function EPawPage() {
           </div>
 
           <div className="relative min-h-[560px] overflow-hidden rounded-[2.8rem] border border-white/10 bg-white/[0.035] p-6 backdrop-blur-xl">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_20%,rgba(94,167,160,0.18),transparent_32%),radial-gradient(circle_at_78%_80%,rgba(232,169,107,0.15),transparent_34%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_20%,rgba(199,92,124,0.18),transparent_32%),radial-gradient(circle_at_78%_80%,rgba(232,169,107,0.15),transparent_34%)]" />
 
             <Phone
-              src="/epaw/epaw-login.png"
+              src="/yuvio/onboarding-1.PNG"
               className="absolute left-8 top-20 w-[29%] rotate-[-8deg]"
             />
             <Phone
-              src="/epaw/epaw-home.png"
+              src="/yuvio/home.PNG"
               className="absolute left-[33%] top-8 z-20 w-[34%]"
               priority
             />
             <Phone
-              src="/epaw/epaw-pet-details.png"
+              src="/yuvio/dashboard.PNG"
               className="absolute bottom-14 right-8 w-[30%] rotate-[8deg]"
             />
 
             <div className="absolute bottom-7 left-7 rounded-full border border-white/10 bg-[#211826]/75 px-4 py-3 backdrop-blur-xl">
               <p className="text-xs font-medium text-[#F6EFE8]">
-                Health records · AI recognition · Matching
+                Discovery · Messaging · Owner tools
               </p>
             </div>
           </div>
@@ -151,15 +149,15 @@ export default function EPawPage() {
         <div className="grid gap-5 lg:grid-cols-2">
           <InfoCard
             label="Problem"
-            title="Pet health and adoption are still fragmented."
-            text="Pet owners often depend on physical records, veterinarians and owners are not always synchronized, and adoption decisions can be based on incomplete or surface-level information."
-            accent="teal"
+            title="Pet adoption often feels scattered and low-trust."
+            text="Users need to discover suitable pets, compare details, contact owners safely and follow the adoption process without feeling lost. Owners also need a clear way to manage listings."
+            accent="pink"
           />
 
           <InfoCard
             label="Solution"
-            title="A mobile system for care, records and adoption."
-            text="E-Paw brings together digital pet profiles, health records, appointment scheduling, AI-assisted vaccine sticker recognition and adoption compatibility logic."
+            title="A friendlier flow for adopters and owners."
+            text="Yuvio brings onboarding, authentication, listing discovery, favorites, messaging, notifications and owner dashboards into one consistent mobile experience."
             accent="gold"
           />
         </div>
@@ -168,100 +166,99 @@ export default function EPawPage() {
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 lg:px-10">
         <div className="mb-10 grid gap-5 md:grid-cols-[0.9fr_1fr] md:items-end">
           <div>
-            <p className="text-xs font-medium uppercase tracking-[0.32em] text-[#5EA7A0]">
+            <p className="text-xs font-medium uppercase tracking-[0.32em] text-[#C75C7C]">
               Product Flow
             </p>
             <h2 className="mt-4 max-w-2xl text-[2.3rem] font-semibold leading-[1.04] tracking-[-0.05em] md:text-[3.6rem]">
-              Designed for everyday pet care moments.
+              Designed around trust, not just screens.
             </h2>
           </div>
 
           <p className="max-w-xl text-sm leading-7 text-[#CFC3CB]">
-            The experience is grouped around account access, pet profiles,
-            appointments and adoption-oriented decision flows.
+            The app experience is grouped around key adoption moments:
+            onboarding, discovery, owner management and communication.
           </p>
         </div>
 
         <div className="grid gap-5 lg:grid-cols-12">
-          <ShowcaseBlock
-            className="lg:col-span-6"
-            title="Access"
-            text="Login and registration screens create the entry point for owners and users."
-            images={["/epaw/epaw-login.png", "/epaw/epaw-register.png"]}
-          />
+  <ShowcaseBlock
+    className="lg:col-span-6"
+    title="Onboarding"
+    text="A warm first impression that introduces the adoption experience with friendly visuals."
+    images={[
+      "/yuvio/onboarding-1.PNG",
+      "/yuvio/onboarding-2.PNG",
+      "/yuvio/onboarding-3.PNG",
+    ]}
+  />
 
-          <ShowcaseBlock
-            className="lg:col-span-6"
-            title="Pet Health"
-            text="Home, pet list and detail screens help users follow pet records and health context."
-            images={[
-              "/epaw/epaw-home.png",
-              "/epaw/epaw-pets.png",
-              "/epaw/epaw-pet-details.png",
-            ]}
-          />
+  <ShowcaseBlock
+    className="lg:col-span-6"
+    title="Discovery"
+    text="A mobile-first feed where users can browse, search, filter and understand listings quickly."
+    images={[
+      "/yuvio/home.PNG",
+      "/yuvio/home-dog-selected.PNG",
+      "/yuvio/filter.PNG",
+    ]}
+  />
 
-          <ShowcaseBlock
-            className="lg:col-span-6"
-            title="Appointments"
-            text="Appointment screens support care planning and veterinary follow-up moments."
-            images={[
-              "/epaw/epaw-appointments.png",
-              "/epaw/epaw-new-appointment.png",
-            ]}
-          />
+  <ShowcaseBlock
+    className="lg:col-span-6"
+    title="Owner tools"
+    text="Dashboard and listing screens help owners track adoption status and manage listings."
+    images={["/yuvio/dashboard.PNG", "/yuvio/my-listings.PNG"]}
+  />
 
-          <ShowcaseBlock
-            className="lg:col-span-6"
-            title="Adoption"
-            text="Adoption screens introduce matching-oriented flows for more suitable outcomes."
-            images={[
-              "/epaw/epaw-adoption-intro.png",
-              "/epaw/epaw-adoption-flow.png",
-            ]}
-          />
-        </div>
+  <ShowcaseBlock
+    className="lg:col-span-6"
+    title="Communication"
+    text="Favorites, messages and notifications support the trust layer of the adoption journey."
+    images={[
+      "/yuvio/favorites.PNG",
+      "/yuvio/messages-1.PNG",
+      "/yuvio/notifications.PNG",
+    ]}
+  />
+</div>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-12 md:px-8 lg:px-10">
         <div className="grid gap-5 overflow-hidden rounded-[2.8rem] border border-white/10 bg-[#F6EFE8] p-6 text-[#171018] md:grid-cols-[0.85fr_1.15fr] md:p-8 lg:p-10">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[#BD054C]">
-              AI Spotlight
+              Spotlight
             </p>
             <h2 className="mt-4 max-w-xl text-[2.1rem] font-semibold leading-[1.05] tracking-[-0.05em] md:text-[3.4rem]">
-              Intelligence used for practical care tasks.
+              Search, filter and decide with less friction.
             </h2>
             <p className="mt-5 max-w-lg text-sm leading-7 text-[#6F6470]">
-              E-Paw includes a vaccine sticker recognition idea using an image
-              detection pipeline, connecting captured visuals to structured
-              health records.
+              Discovery is the heart of Yuvio. I focused on making listings feel
+              easy to scan, compare and save before starting a conversation.
             </p>
           </div>
 
-          <div className="rounded-[2.1rem] bg-[#E8E2D8] p-6">
-            <div className="rounded-[1.8rem] bg-[#171018] p-7 text-[#F6EFE8]">
-              <BrainCircuit className="h-9 w-9 text-[#E8A96B]" />
-
-              <div className="mt-8 space-y-4 text-sm leading-7 text-[#CFC3CB]">
-                <p>Photo capture / upload</p>
-                <p>→ Flask API</p>
-                <p>→ YOLO-based detection</p>
-                <p>→ vaccine type identified</p>
-                <p>→ health record updated</p>
-              </div>
-            </div>
+          <div className="flex items-center justify-center gap-5 rounded-[2.1rem] bg-[#E8E2D8] p-6">
+            <Phone
+              src="/yuvio/home.PNG"
+              className="w-[28%] max-w-[150px]"
+              priority
+            />
+            <Phone
+              src="/yuvio/filter.PNG"
+              className="w-[28%] max-w-[150px]"
+            />
           </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-5 py-16 md:px-8 lg:px-10">
         <div className="mb-10">
-          <p className="text-xs font-medium uppercase tracking-[0.32em] text-[#5EA7A0]">
+          <p className="text-xs font-medium uppercase tracking-[0.32em] text-[#C75C7C]">
             Core Features
           </p>
           <h2 className="mt-4 max-w-3xl text-[2.3rem] font-semibold leading-[1.04] tracking-[-0.05em] md:text-[3.6rem]">
-            A product system for care, records and matching.
+            Product flows designed to feel clear and human.
           </h2>
         </div>
 
@@ -272,9 +269,9 @@ export default function EPawPage() {
             return (
               <div
                 key={feature.title}
-                className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl transition hover:-translate-y-1 hover:border-[#5EA7A0]/35"
+                className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 backdrop-blur-xl transition hover:-translate-y-1 hover:border-[#E8A96B]/30"
               >
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#5EA7A0]/10 text-[#5EA7A0]">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#E8A96B]/10 text-[#E8A96B]">
                   <Icon className="h-5 w-5" />
                 </div>
 
@@ -299,7 +296,7 @@ export default function EPawPage() {
             </p>
 
             <h2 className="mt-5 text-[2.2rem] font-semibold leading-[1.05] tracking-[-0.05em] md:text-[3.4rem]">
-              Systems behind health and adoption flows.
+              Systems behind the interface.
             </h2>
 
             <div className="mt-8 space-y-4">
@@ -316,7 +313,7 @@ export default function EPawPage() {
           </div>
 
           <div className="rounded-[2.6rem] border border-white/10 bg-white/[0.04] p-8 backdrop-blur-xl md:p-10">
-            <p className="text-xs font-medium uppercase tracking-[0.32em] text-[#5EA7A0]">
+            <p className="text-xs font-medium uppercase tracking-[0.32em] text-[#C75C7C]">
               Stack
             </p>
 
@@ -331,16 +328,17 @@ export default function EPawPage() {
               ))}
             </div>
 
-            <div className="mt-8 rounded-[2rem] border border-[#5EA7A0]/20 bg-[#5EA7A0]/10 p-6">
-              <ScanLine className="h-8 w-8 text-[#5EA7A0]" />
+            <div className="mt-8 rounded-[2rem] border border-[#E8A96B]/20 bg-[#E8A96B]/10 p-6">
+              <Smartphone className="h-8 w-8 text-[#E8A96B]" />
 
               <h3 className="mt-4 text-2xl font-semibold">
                 Product decision
               </h3>
 
               <p className="mt-3 text-sm leading-7 text-[#CFC3CB]">
-                A key idea in E-Paw is that adoption should not only reflect
-                what a user wants, but also what the pet actually needs.
+                I focused on making the app feel friendly and trustworthy while
+                still supporting practical adoption actions like searching,
+                filtering, messaging and owner-side management.
               </p>
             </div>
           </div>
@@ -355,12 +353,12 @@ export default function EPawPage() {
             </p>
 
             <h2 className="mt-3 text-[2rem] font-semibold tracking-[-0.05em] md:text-[3rem]">
-              Continue to Istanbul Vibe Finder
+              Continue to E-Paw
             </h2>
           </div>
 
           <Link
-            href="/projects/istanbul-vibe-finder"
+            href="/projects/e-paw"
             className="inline-flex items-center gap-2 rounded-full bg-[#F6EFE8] px-6 py-4 text-sm font-medium text-[#120D13] transition hover:-translate-y-1 hover:bg-[#E8A96B]"
           >
             Open case study
@@ -381,26 +379,24 @@ function InfoCard({
   label: string;
   title: string;
   text: string;
-  accent: "teal" | "gold";
+  accent: "pink" | "gold";
 }) {
   return (
     <div
       className={`rounded-[2.6rem] border border-white/10 p-8 backdrop-blur-xl md:p-10 ${
-        accent === "teal" ? "bg-white/[0.035]" : "bg-[#211826]/60"
+        accent === "pink" ? "bg-white/[0.035]" : "bg-[#211826]/60"
       }`}
     >
       <p
         className={`text-xs font-medium uppercase tracking-[0.32em] ${
-          accent === "teal" ? "text-[#5EA7A0]" : "text-[#E8A96B]"
+          accent === "pink" ? "text-[#C75C7C]" : "text-[#E8A96B]"
         }`}
       >
         {label}
       </p>
-
       <h2 className="mt-5 text-[2rem] font-semibold leading-[1.08] tracking-[-0.045em] md:text-[3rem]">
         {title}
       </h2>
-
       <p className="mt-6 text-[15px] leading-8 text-[#CFC3CB]">{text}</p>
     </div>
   );
@@ -411,18 +407,20 @@ function ShowcaseBlock({
   text,
   images,
   className = "",
+  featured = false,
 }: {
   title: string;
   text: string;
   images: string[];
   className?: string;
+  featured?: boolean;
 }) {
   return (
     <div
       className={`${className} overflow-hidden rounded-[2.35rem] border border-[#4A3341]/35 bg-[#241821]/82 p-6 text-[#F6EFE8] shadow-[0_24px_80px_-62px_rgba(0,0,0,0.75)] backdrop-blur-xl`}
     >
       <div className="mb-4 min-h-[76px]">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#5EA7A0]">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#C75C7C]">
           {title}
         </p>
 
@@ -432,8 +430,8 @@ function ShowcaseBlock({
       </div>
 
       <div className="flex min-h-[500px] items-center justify-center rounded-[1.9rem] border border-[#4A3341]/35 bg-[#1A1118]/72 px-5 py-5">
-        <ScreenCarousel images={images} alt={`${title} E-Paw screens`} />
-      </div>
+  <ScreenCarousel images={images} alt={`${title} Yuvio screens`} />
+</div>
     </div>
   );
 }
@@ -454,7 +452,7 @@ function Phone({
       <div className="overflow-hidden rounded-[1.15rem] bg-[#F6EFE8]">
         <Image
           src={src}
-          alt="E-Paw app screen"
+          alt="Yuvio app screen"
           width={420}
           height={900}
           className="h-auto w-full"
