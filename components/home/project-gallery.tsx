@@ -1,32 +1,43 @@
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/ui/reveal";
-import PhoneFrame from "@/components/ui/phone-frame";
 import { ArrowRight, BrainCircuit } from "lucide-react";
 
 const projects = [
   {
     title: "Yuvio",
     href: "/projects/yuvio",
-    type: "Mobile product",
-    description: "Pet adoption platform with discovery, messaging and listing management.",
-    image: "/yuvio/home.PNG",
-    shape: "mobile",
+    type: "Mobile Product",
+    description:
+      "Pet adoption platform with discovery, messaging and listing management.",
+    images: [
+      "/yuvio/onboarding-1.PNG",
+      "/yuvio/home.PNG",
+      "/yuvio/dashboard.PNG",
+    ],
+    tags: ["React Native", "Supabase", "Realtime"],
   },
   {
     title: "E-Paw",
     href: "/projects/e-paw",
     type: "Mobile + AI",
-    description: "Pet health tracking with vaccine recognition and matching logic.",
-    image: "/epaw/epaw-home.PNG",
-    shape: "mobile",
+    description:
+      "Pet health tracking with vaccine recognition and matching logic.",
+    images: [
+      "/epaw/epaw-login.png",
+      "/epaw/epaw-home.png",
+      "/epaw/epaw-pet-details.png",
+    ],
+    tags: ["React Native", "Firebase", "YOLOv8"],
   },
   {
     title: "Istanbul Vibe Finder",
     href: "/projects/istanbul-vibe-finder",
-    type: "AI web system",
-    description: "Venue discovery system using semantic search, embeddings and recommendations.",
-    image: null,
-    shape: "web",
+    type: "AI Web System",
+    description:
+      "Venue discovery system using semantic search, embeddings and recommendations.",
+    images: [],
+    tags: ["Python", "FastAPI", "FAISS"],
   },
 ];
 
@@ -48,8 +59,7 @@ export default function ProjectGallery() {
           </div>
 
           <p className="max-w-md text-sm leading-7 text-[#B8AAB7]">
-            Mobile projects keep their tall frame, while web and AI systems get
-            a wider showcase.
+            A small collection of mobile, AI and product systems I’ve built.
           </p>
         </div>
       </Reveal>
@@ -74,53 +84,41 @@ function ProjectCard({
   href,
   type,
   description,
-  image,
+  images,
+  tags,
   wide = false,
 }: {
   title: string;
   href: string;
   type: string;
   description: string;
-  image: string | null;
-  shape: string;
+  images: string[];
+  tags: string[];
   wide?: boolean;
 }) {
   return (
     <Link
       href={href}
-      className={`group block overflow-hidden rounded-[2.2rem] border border-white/10 bg-white/[0.035] p-5 backdrop-blur-xl transition hover:-translate-y-1 hover:border-[#E8A96B]/35 ${
+      className={`group block overflow-hidden rounded-[2.2rem] border border-white/10 bg-white/[0.035] p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-[#E8A96B]/35 ${
         wide ? "lg:p-6" : ""
       }`}
     >
       <div
         className={`grid gap-6 ${
-          wide ? "md:grid-cols-[1fr_1.1fr] md:items-center" : ""
+          wide ? "md:grid-cols-[1fr_1.05fr] md:items-center" : ""
         }`}
       >
         <div
-          className={`relative flex items-center justify-center overflow-hidden rounded-[1.6rem] border border-white/10 bg-[#1A131D] ${
-            wide ? "min-h-[260px]" : "h-[260px]"
+          className={`relative overflow-hidden rounded-[1.7rem] border border-white/10 bg-[#1A131D] ${
+            wide ? "min-h-[300px]" : "h-[330px]"
           }`}
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(199,92,124,0.16),transparent_30%),radial-gradient(circle_at_80%_80%,rgba(232,169,107,0.12),transparent_35%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_18%,rgba(199,92,124,0.18),transparent_32%),radial-gradient(circle_at_80%_82%,rgba(232,169,107,0.13),transparent_34%)]" />
 
-          {image ? (
-            <div className={wide ? "w-[32%] min-w-[130px]" : "w-[32%] min-w-[120px]"}>
-              <PhoneFrame src={image} alt={title} />
-            </div>
+          {images.length > 0 ? (
+            <PhoneCluster images={images} title={title} />
           ) : (
-            <div className="relative w-[76%] max-w-xl rounded-[1.5rem] border border-white/10 bg-[#120D13]/80 p-8">
-              <div className="mb-12 flex items-center justify-between">
-                <BrainCircuit className="h-8 w-8 text-[#E8A96B]" />
-                <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-[#B8AAB7]">
-                  AI SYSTEM
-                </span>
-              </div>
-
-              <p className="max-w-md text-2xl font-semibold leading-tight text-[#F6EFE8]">
-                AI-powered venue discovery for Istanbul.
-              </p>
-            </div>
+            <AICard />
           )}
         </div>
 
@@ -137,6 +135,17 @@ function ProjectCard({
             {description}
           </p>
 
+          <div className="mt-5 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-[#CFC3CB]"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
           <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-[#E8A96B] transition group-hover:gap-3">
             View case study
             <ArrowRight className="h-4 w-4" />
@@ -144,5 +153,80 @@ function ProjectCard({
         </div>
       </div>
     </Link>
+  );
+}
+
+function PhoneCluster({ images, title }: { images: string[]; title: string }) {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="relative h-[285px] w-[82%] max-w-[430px]">
+        <MiniPhone
+          src={images[0]}
+          alt={`${title} preview 1`}
+          className="absolute left-[2%] top-[34px] z-10 w-[31%] rotate-[-8deg] opacity-70"
+        />
+
+        <MiniPhone
+          src={images[1]}
+          alt={`${title} preview 2`}
+          className="absolute left-1/2 top-0 z-30 w-[38%] -translate-x-1/2"
+          priority
+        />
+
+        <MiniPhone
+          src={images[2]}
+          alt={`${title} preview 3`}
+          className="absolute right-[2%] top-[46px] z-20 w-[31%] rotate-[8deg] opacity-70"
+        />
+      </div>
+    </div>
+  );
+}
+
+function MiniPhone({
+  src,
+  alt,
+  className,
+  priority = false,
+}: {
+  src: string;
+  alt: string;
+  className: string;
+  priority?: boolean;
+}) {
+  return (
+    <div
+      className={`${className} rounded-[1.45rem] bg-[#0D0B10] p-1.5 shadow-[0_26px_70px_-38px_rgba(0,0,0,0.9)] ring-1 ring-white/10`}
+    >
+      <div className="overflow-hidden rounded-[1.05rem] bg-[#F6EFE8]">
+        <Image
+          src={src}
+          alt={alt}
+          width={360}
+          height={760}
+          priority={priority}
+          className="h-auto w-full"
+        />
+      </div>
+    </div>
+  );
+}
+
+function AICard() {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center p-6">
+      <div className="w-full max-w-xl rounded-[1.8rem] border border-white/10 bg-[#120D13]/85 p-8 shadow-[0_30px_90px_-45px_rgba(0,0,0,0.9)]">
+        <div className="mb-12 flex items-center justify-between">
+          <BrainCircuit className="h-9 w-9 text-[#E8A96B]" />
+          <span className="rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.18em] text-[#B8AAB7]">
+            AI System
+          </span>
+        </div>
+
+        <p className="max-w-md text-2xl font-semibold leading-tight tracking-[-0.04em] text-[#F6EFE8]">
+          AI-powered venue discovery for Istanbul.
+        </p>
+      </div>
+    </div>
   );
 }
