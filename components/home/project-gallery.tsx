@@ -1,232 +1,172 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Globe2 } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import Reveal from "@/components/ui/reveal";
-import { ArrowRight, BrainCircuit } from "lucide-react";
+import InteractivePhone from "@/components/ui/interactive-phone";
+import YuviaDestinationLinks from "@/components/project/yuvia-destination-links";
+import ProjectVisual from "@/components/project/project-visual";
+import VibeConceptVisual from "@/components/project/vibe-concept-visual";
+import { projectStories } from "@/lib/project-stories";
+import { useLanguage } from "@/components/ui/language-provider";
 
-const projects = [
-  {
-    title: "Yuvio",
-    href: "/projects/yuvio",
-    type: "Mobile Product",
-    description:
-      "Pet adoption platform with discovery, messaging and listing management.",
-    images: [
-      "/yuvio/onboarding-1.PNG",
-      "/yuvio/home.PNG",
-      "/yuvio/dashboard.PNG",
-    ],
-    tags: ["React Native", "Supabase", "Realtime"],
-  },
-  {
-    title: "E-Paw",
-    href: "/projects/e-paw",
-    type: "Mobile + AI",
-    description:
-      "Pet health tracking with vaccine recognition and matching logic.",
-    images: [
-      "/epaw/epaw-login.PNG",
-      "/epaw/epaw-home.PNG",
-      "/epaw/epaw-pet-details.PNG",
-    ],
-    tags: ["React Native", "Firebase", "YOLOv8"],
-  },
-  {
-    title: "Istanbul Vibe Finder",
-    href: "/projects/istanbul-vibe-finder",
-    type: "AI Web System",
-    description:
-      "Venue discovery system using semantic search, embeddings and recommendations.",
-    images: [],
-    tags: ["Python", "FastAPI", "FAISS"],
-  },
-];
+function CoverScreenshotPhone({ src, alt, className }: { src: string; alt: string; className: string }) {
+  return <div className={className}>
+    <div className="rounded-[2.4rem] border border-white/20 bg-gradient-to-br from-[#777078] via-[#252126] to-[#050405] p-[6px] shadow-[0_30px_65px_-20px_rgba(0,0,0,.85)]">
+      <div className="relative overflow-hidden rounded-[2rem] bg-[#F8F5ED]">
+        <Image src={src} alt={alt} width={1170} height={2532} sizes="(max-width: 640px) 110px, (max-width: 1024px) 200px, 220px" className="block h-auto w-full" />
+        <span aria-hidden="true" className="absolute left-1/2 top-[1.5%] h-[3%] w-[31%] -translate-x-1/2 rounded-full bg-[#090809]" />
+      </div>
+    </div>
+  </div>;
+}
 
-export default function ProjectGallery() {
+export default function ProjectGallery({ variant = "catalogue" }: { variant?: "catalogue" | "expanded" }) {
+  const { language } = useLanguage();
+  const tr = language === "tr";
   return (
-    <section
-      id="work"
-      className="mx-auto max-w-7xl px-5 py-16 md:px-8 lg:px-10"
-    >
+    <section id="work" className="continuous-section relative mx-auto max-w-7xl px-5 py-16 md:px-8 lg:px-10 lg:py-20">
       <Reveal>
-        <div className="mb-9 flex flex-col justify-between gap-5 md:flex-row md:items-end">
-          <div>
-            <p className="text-xs uppercase tracking-[0.32em] text-[#C75C7C]">
-              Work
-            </p>
-            <h2 className="mt-4 max-w-2xl text-[2rem] font-semibold leading-[1.08] tracking-[-0.04em] text-[#F6EFE8] md:text-[3rem]">
-              Selected products and experiments.
-            </h2>
-          </div>
-
-          <p className="max-w-md text-sm leading-7 text-[#B8AAB7]">
-            A small collection of mobile, AI and product systems I’ve built.
-          </p>
+        <div className="mb-8 grid gap-7 md:grid-cols-[1fr_.55fr] md:items-end lg:mb-10">
+          <div><p className="text-xs uppercase tracking-[.34em] text-[#C75C7C]">03 · {tr ? "Seçili işler" : "Selected work"}</p><h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-[.96] tracking-[-.065em] md:text-6xl">{tr ? <>Ürünler, süreçler ve <span className="font-serif font-normal italic text-[#E8A96B]">verdiğim kararlar.</span></> : <>The products, the process and <span className="font-serif font-normal italic text-[#E8A96B]">the decisions behind them.</span></>}</h2></div>
+          <p className="max-w-md text-sm leading-7 text-[#B8AAB7]">{tr ? "Her projede çözmeye çalıştığım problemi, tasarım yaklaşımımı ve ortaya çıkan deneyimi birlikte gösteriyorum." : "Each project shows the problem I worked on, the decisions I made and the experience that came out of them."}</p>
         </div>
       </Reveal>
 
-      <div className="grid gap-5 lg:grid-cols-2">
-        {projects.slice(0, 2).map((project, index) => (
-          <Reveal key={project.title} delay={index * 0.06}>
-            <ProjectCard {...project} />
-          </Reveal>
-        ))}
+      <Reveal>
+        <article className="group relative overflow-hidden rounded-[2.7rem] border border-white/10 bg-[#181119] shadow-[0_35px_100px_rgba(0,0,0,.28)]">
+          <div className="grid lg:grid-cols-[.88fr_1.12fr]">
+            <div className="relative z-10 flex min-h-[500px] flex-col justify-between p-7 sm:p-10 lg:min-h-[610px] xl:p-12">
+              <div>
+                <div className="flex flex-wrap items-center justify-between gap-x-5 gap-y-2 border-b border-white/10 pb-6">
+                  <span className="text-[11px] font-semibold uppercase tracking-[.25em] text-[#E8A96B]">01 · {tr ? "Geliştirdiğim ürün" : "Product I built"}</span>
+                  <span className="text-[10px] uppercase tracking-[.22em] text-[#B8AAB7]">iOS · Android · Web</span>
+                </div>
+                <p className="mt-12 text-xs uppercase tracking-[.3em] text-[#F36E2B]">{tr ? "Bitirme projesinden canlı ürüne" : "From capstone to live product"}</p>
+                <h3 className="mt-5"><Image src="/work/yuvia/brand/logoname-white.webp" alt="Yuvia" width={900} height={270} sizes="(max-width: 640px) 70vw, 280px" className="h-auto w-[min(70vw,280px)] max-w-full" /></h3>
+                <p className="mt-7 max-w-md text-[15px] leading-7 text-[#CFC3CB]">{tr ? "Üniversiteden bir arkadaşımla başladığımız Yuvia’yı canlı bir sahiplendirme ürününe dönüştürdük. Ben ürün akışlarını ve arayüzünü tasarladım; mobil ve web geliştirmesinde çalıştım. Bugün de birlikte sürdürüyoruz." : "A friend and I grew Yuvia from a university capstone into a live pet adoption product. I designed its flows and interface and worked on the mobile and web development. We continue to improve it together."}</p>
+              </div>
+              <div className="mt-10 border-t border-white/10 pt-6">
+                <Link href="/projects/yuvia" className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#F6EFE8] px-5 text-sm font-semibold text-[#120D13] transition hover:bg-[#E8A96B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8A96B]">{tr ? "Detaylı incele" : "Explore in detail"}<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+                <YuviaDestinationLinks language={language} compact />
+              </div>
+            </div>
+            <div className="relative isolate min-h-[440px] overflow-hidden border-t border-white/10 bg-[#181119] sm:min-h-[570px] lg:min-h-[610px] lg:border-l lg:border-t-0" aria-label={tr ? "Yuvia uygulamasından üç telefon ekranı" : "Three phone screens from the Yuvia app"}>
+              <CoverScreenshotPhone src="/work/yuvia/screens/home.webp" alt={tr ? "Yuvia keşif ekranı" : "Yuvia discovery screen"} className="absolute left-[7%] top-1/2 w-[27%] -translate-y-1/2 -rotate-[9deg] sm:left-[11%] sm:w-[26%] lg:left-[8%] lg:w-[27%]" />
+              <CoverScreenshotPhone src="/work/yuvia/screens/favorites.webp" alt={tr ? "Yuvia favoriler ekranı" : "Yuvia favorites screen"} className="absolute right-[7%] top-1/2 w-[27%] -translate-y-1/2 rotate-[9deg] sm:right-[11%] sm:w-[26%] lg:right-[8%] lg:w-[27%]" />
+              <InteractivePhone videoSrc="/work/yuvia/videos/hero-demo.mp4" videoFit="contain" label={tr ? "Yuvia uygulama videosu" : "Yuvia app video"} className="absolute left-1/2 top-1/2 z-10 h-[340px] w-[161px] -translate-x-1/2 -translate-y-1/2 sm:h-[450px] sm:w-[213px] lg:h-[470px] lg:w-[223px] xl:h-[500px] xl:w-[237px]" />
+            </div>
+          </div>
+        </article>
+      </Reveal>
 
-        <Reveal delay={0.12} className="lg:col-span-2">
-          <ProjectCard {...projects[2]} wide />
-        </Reveal>
-      </div>
+      {variant === "catalogue" ? <Reveal><ProjectCatalogue tr={tr} language={language} /></Reveal> : <ExpandedProjects tr={tr} language={language} />}
     </section>
   );
 }
 
-function ProjectCard({
-  title,
-  href,
-  type,
-  description,
-  images,
-  tags,
-  wide = false,
-}: {
-  title: string;
-  href: string;
-  type: string;
-  description: string;
-  images: string[];
-  tags: string[];
-  wide?: boolean;
-}) {
-  return (
-    <Link
-      href={href}
-      className={`group block overflow-hidden rounded-[2.2rem] border border-white/10 bg-white/[0.035] p-5 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-[#E8A96B]/35 ${
-        wide ? "lg:p-6" : ""
-      }`}
-    >
-      <div
-        className={`grid gap-6 ${
-          wide ? "md:grid-cols-[1fr_1.05fr] md:items-center" : ""
-        }`}
-      >
-        <div
-          className={`relative overflow-hidden rounded-[1.7rem] border border-white/10 bg-[#1A131D] ${
-            wide ? "min-h-[300px]" : "h-[330px]"
-          }`}
+function ExpandedProjects({ tr, language }: { tr: boolean; language: "tr" | "en" }) {
+  return <div className="mt-10 space-y-6 lg:mt-8 lg:space-y-8">
+    {projectStories.map((project, index) => {
+      const copy = project.copy[language];
+      return <Reveal key={project.slug}>
+        <article className="group overflow-hidden rounded-[2.7rem] border border-white/10 bg-[#181119] shadow-[0_35px_100px_rgba(0,0,0,.2)]">
+          <div className="grid lg:grid-cols-[.88fr_1.12fr]">
+            <div className={`flex min-h-[440px] flex-col justify-between p-7 sm:p-10 lg:min-h-[520px] xl:p-12 ${index % 2 === 1 ? "lg:order-2" : ""}`}>
+              <div>
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-6"><span className="text-[11px] font-semibold uppercase tracking-[.25em]" style={{ color: project.accent }}>{project.number} · {copy.category}</span><span className="text-[10px] uppercase tracking-[.22em] text-[#B8AAB7]">{copy.status}</span></div>
+                <h3 className="mt-12 text-[clamp(2.7rem,5vw,4.7rem)] font-semibold leading-[.94] tracking-[-.07em]">{project.title}</h3>
+                <p className="mt-5 max-w-md text-[clamp(1.25rem,2.1vw,1.8rem)] font-semibold leading-[1.15] tracking-[-.04em]">{copy.coverLine}</p>
+                <p className="mt-5 max-w-md text-[15px] leading-7 text-[#CFC3CB]">{copy.intro}</p>
+              </div>
+              <div className="mt-9 flex flex-wrap items-center gap-3 border-t border-white/10 pt-6"><Link href={`/projects/${project.slug}`} className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#F6EFE8] px-5 text-sm font-semibold text-[#120D13] transition hover:bg-[#E8A96B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8A96B]">{tr ? "Detaylı incele" : "Explore in detail"}<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>{project.liveHref && <a href={project.liveHref} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center gap-2 rounded-full border border-white/20 px-5 text-sm font-medium text-[#F6EFE8] transition hover:border-[#E8A96B] hover:text-[#E8A96B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8A96B]"><Globe2 className="h-4 w-4" aria-hidden="true" />{tr ? "Canlı site" : "Live site"}<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>}</div>
+            </div>
+            <ProjectVisual project={project} language={language} compact reverse={index % 2 === 1} />
+          </div>
+        </article>
+      </Reveal>;
+    })}
+  </div>;
+}
+
+const catalogueDescriptions = {
+  "ala-wellness": {
+    tr: "İki dilli stüdyo sitesi, kolay rezervasyon akışı ve ekibin işini kolaylaştıran yönetim paneli.",
+    en: "A bilingual studio site, a clear booking flow and an admin panel that supports the team.",
+  },
+  unifymatch: {
+    tr: "Teknoloji danışmanlığını ihtiyaçtan uygulamaya anlaşılır bir karar yolculuğuna dönüştürdüğüm B2B site.",
+    en: "A B2B site that turns technology advisory into a clear journey from need to implementation.",
+  },
+  "e-paw": {
+    tr: "Sağlık kaydı, randevu ve AI destekli aşı etiketi tanımayı bir araya getiren mobil prototip.",
+    en: "A mobile prototype connecting care records, appointments and AI-assisted vaccine sticker recognition.",
+  },
+  "istanbul-vibe-finder": {
+    tr: "Atmosfer ve niyeti doğal dilden anlayan bir İstanbul mekân keşfi fikri. Geliştirmeyi sürdürüyorum.",
+    en: "An Istanbul place discovery concept that reads mood and intent from natural language. In development.",
+  },
+} as const;
+
+function ProjectCatalogue({ tr, language }: { tr: boolean; language: "tr" | "en" }) {
+  const [selected, setSelected] = useState(0);
+  const reducedMotion = useReducedMotion();
+  const project = projectStories[selected];
+  const previous = () => setSelected((current) => (current - 1 + projectStories.length) % projectStories.length);
+  const next = () => setSelected((current) => (current + 1) % projectStories.length);
+
+  return <div className="relative mt-20 overflow-clip border-y border-white/10 py-12 md:mt-24 md:py-16">
+    <div className="relative h-[300px] sm:h-[400px] md:h-[500px]" aria-label={tr ? "Yatay proje kataloğu" : "Horizontal project catalogue"}>
+      {projectStories.map((item, index) => {
+        let offset = index - selected;
+        if (offset > projectStories.length / 2) offset -= projectStories.length;
+        if (offset < -projectStories.length / 2) offset += projectStories.length;
+        const active = offset === 0;
+        const hidden = Math.abs(offset) > 2;
+        return <motion.button
+          key={item.slug}
+          type="button"
+          onClick={() => setSelected(index)}
+          aria-label={`${item.title} ${tr ? "projesini seç" : "project"}`}
+          aria-pressed={active}
+          initial={false}
+          animate={{ x: `${offset * 78}%`, scale: active ? 1 : 0.76, rotate: offset * -3, opacity: hidden ? 0 : active ? 1 : 0.42 }}
+          transition={reducedMotion ? { duration: 0 } : { type: "spring", stiffness: 240, damping: 26 }}
+          className="absolute left-1/2 top-1/2 h-[260px] w-[82vw] max-w-[860px] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-[1.8rem] border border-white/15 bg-[#211826] text-left shadow-[0_35px_90px_-38px_rgba(0,0,0,.95)] outline-none focus-visible:ring-2 focus-visible:ring-[#E8A96B] sm:h-[360px] md:h-[440px]"
+          style={{ zIndex: 10 - Math.abs(offset), transformOrigin: "center center" }}
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_18%,rgba(199,92,124,0.18),transparent_32%),radial-gradient(circle_at_80%_82%,rgba(232,169,107,0.13),transparent_34%)]" />
+          {item.kind === "system"
+            ? <VibeConceptVisual language={language} compact />
+            : item.kind === "mobile"
+              ? <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_43%,rgba(81,207,198,.30),transparent_43%),#172424]">
+                  <CoverScreenshotPhone src="/epaw/epaw-pet-details.PNG" alt={tr ? "E-Paw evcil hayvan profili" : "E-Paw pet profile"} className="absolute left-1/2 top-[47%] w-[29%] max-w-[160px] -translate-x-[125%] -translate-y-1/2 -rotate-[9deg]" />
+                  <CoverScreenshotPhone src="/epaw/epaw-appointments.PNG" alt={tr ? "E-Paw randevu takibi" : "E-Paw appointment tracking"} className="absolute left-1/2 top-[47%] w-[29%] max-w-[160px] translate-x-[25%] -translate-y-1/2 rotate-[9deg]" />
+                  <CoverScreenshotPhone src="/epaw/epaw-home.PNG" alt={tr ? "E-Paw ana ekranı" : "E-Paw home screen"} className="absolute left-1/2 top-[46%] z-10 w-[32%] max-w-[175px] -translate-x-1/2 -translate-y-1/2" />
+                </div>
+              : <Image src={item.slug === "ala-wellness" ? "/work/ala/booking.png" : "/work/unifymatch/ecosystem.png"} alt="" fill className="object-cover" sizes="680px" />}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#120D13]/35 via-transparent to-transparent" />
+        </motion.button>;
+      })}
+    </div>
 
-          {images.length > 0 ? (
-            <PhoneCluster images={images} title={title} />
-          ) : (
-            <AICard />
-          )}
-        </div>
+    <div className="mx-auto mt-3 flex max-w-[1040px] items-center justify-between px-1 sm:mt-4 md:mt-5">
+      <button type="button" onClick={previous} className="grid h-11 w-11 place-items-center rounded-full border border-white/70 bg-[#F6EFE8] text-[#120D13] shadow-lg transition hover:scale-105 hover:bg-[#E8A96B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8A96B] md:h-12 md:w-12" aria-label={tr ? "Önceki proje" : "Previous project"}><ArrowLeft className="h-5 w-5" aria-hidden="true" /></button>
+      <button type="button" onClick={next} className="grid h-11 w-11 place-items-center rounded-full border border-white/70 bg-[#F6EFE8] text-[#120D13] shadow-lg transition hover:scale-105 hover:bg-[#E8A96B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8A96B] md:h-12 md:w-12" aria-label={tr ? "Sonraki proje" : "Next project"}><ArrowRight className="h-5 w-5" aria-hidden="true" /></button>
+    </div>
 
-        <div className={wide ? "md:px-4" : "pt-1"}>
-          <p className="text-[11px] uppercase tracking-[0.28em] text-[#A78BA5]">
-            {type}
-          </p>
-
-          <h3 className="mt-3 text-[1.85rem] font-semibold tracking-[-0.04em] text-[#F6EFE8]">
-            {title}
-          </h3>
-
-          <p className="mt-3 max-w-xl text-sm leading-7 text-[#B8AAB7]">
-            {description}
-          </p>
-
-          <div className="mt-5 flex flex-wrap gap-2">
-            {tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-xs font-medium text-[#CFC3CB]"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-[#E8A96B] transition group-hover:gap-3">
-            View case study
-            <ArrowRight className="h-4 w-4" />
-          </div>
-        </div>
+    <div className="mx-auto mt-6 grid max-w-[860px] gap-6 px-1 md:mt-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
+      <div>
+        <p className="text-[10px] font-semibold uppercase tracking-[.28em]" style={{ color: project.accent }}>{String(selected + 1).padStart(2, "0")} / {String(projectStories.length).padStart(2, "0")} <span className="mx-2 opacity-50">·</span> {project.copy[language].category}</p>
+        <h3 className="mt-2 text-3xl font-semibold tracking-[-.055em] text-[#F6EFE8] md:text-4xl">{project.title}</h3>
+        <p className="mt-2 max-w-xl text-sm leading-6 text-[#B8AAB7]">{catalogueDescriptions[project.slug as keyof typeof catalogueDescriptions][language]}</p>
       </div>
-    </Link>
-  );
-}
-
-function PhoneCluster({ images, title }: { images: string[]; title: string }) {
-  return (
-    <div className="absolute inset-0 flex items-center justify-center">
-      <div className="relative h-[285px] w-[82%] max-w-[430px]">
-        <MiniPhone
-          src={images[0]}
-          alt={`${title} preview 1`}
-          className="absolute left-[2%] top-[34px] z-10 w-[31%] rotate-[-8deg] opacity-70"
-        />
-
-        <MiniPhone
-          src={images[1]}
-          alt={`${title} preview 2`}
-          className="absolute left-1/2 top-0 z-30 w-[38%] -translate-x-1/2"
-          priority
-        />
-
-        <MiniPhone
-          src={images[2]}
-          alt={`${title} preview 3`}
-          className="absolute right-[2%] top-[46px] z-20 w-[31%] rotate-[8deg] opacity-70"
-        />
+      <div className="flex flex-wrap items-center gap-3 md:justify-end">
+        <Link href={`/projects/${project.slug}`} className="inline-flex min-h-12 items-center gap-2 rounded-full bg-[#F6EFE8] px-5 text-sm font-semibold text-[#120D13] transition hover:bg-[#E8A96B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8A96B]">{tr ? "Detaylı incele" : "Explore in detail"}<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+        {project.liveHref && <a href={project.liveHref} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center gap-1.5 rounded-full border border-white/25 px-5 text-sm font-medium text-[#F6EFE8] transition hover:border-[#E8A96B] hover:text-[#E8A96B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8A96B]">{tr ? "Canlı site" : "Live site"}<ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>}
       </div>
     </div>
-  );
-}
-
-function MiniPhone({
-  src,
-  alt,
-  className,
-  priority = false,
-}: {
-  src: string;
-  alt: string;
-  className: string;
-  priority?: boolean;
-}) {
-  return (
-    <div
-      className={`${className} rounded-[1.45rem] bg-[#0D0B10] p-1.5 shadow-[0_26px_70px_-38px_rgba(0,0,0,0.9)] ring-1 ring-white/10`}
-    >
-      <div className="overflow-hidden rounded-[1.05rem] bg-[#F6EFE8]">
-        <Image
-          src={src}
-          alt={alt}
-          width={360}
-          height={760}
-          priority={priority}
-          className="h-auto w-full"
-        />
-      </div>
-    </div>
-  );
-}
-
-function AICard() {
-  return (
-    <div className="absolute inset-0 flex items-center justify-center p-6">
-      <div className="w-full max-w-xl rounded-[1.8rem] border border-white/10 bg-[#120D13]/85 p-8 shadow-[0_30px_90px_-45px_rgba(0,0,0,0.9)]">
-        <div className="mb-12 flex items-center justify-between">
-          <BrainCircuit className="h-9 w-9 text-[#E8A96B]" />
-          <span className="rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.18em] text-[#B8AAB7]">
-            AI System
-          </span>
-        </div>
-
-        <p className="max-w-md text-2xl font-semibold leading-tight tracking-[-0.04em] text-[#F6EFE8]">
-          AI-powered venue discovery for Istanbul.
-        </p>
-      </div>
-    </div>
-  );
+  </div>;
 }

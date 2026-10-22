@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Bice;Doğa;;;
+FN:Doğa Bice
+TITLE:Product Engineer
+EMAIL;TYPE=INTERNET,WORK:bicedoga@gmail.com
+URL:https://www.linkedin.com/in/dogabice
+ADR;TYPE=WORK:;;;Istanbul;;;Türkiye
+NOTE:Product · Mobile · AI
+END:VCARD
