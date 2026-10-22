@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, CodeXml, ContactRound } from "lucide-react";
 import Reveal from "@/components/ui/reveal";
 import { useLanguage } from "@/components/ui/language-provider";
 import PageIntro from "@/components/home/page-intro";
@@ -30,11 +30,21 @@ export default function Contact({ standalone = false }: { standalone?: boolean }
             </span>
           </a>
 
-          <div className="mt-8 flex flex-col gap-6 text-sm text-[#C9BEC4] sm:flex-row sm:items-center sm:justify-between">
-            <p className="flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-[#5EA7A0]" aria-hidden="true" />{tr ? "Yeni ürün iş birliklerine açığım" : "Open to new product collaborations"}</p>
-            <nav aria-label={tr ? "Sosyal bağlantılar" : "Social links"} className="flex flex-wrap gap-x-7 gap-y-3">
-              <a href="https://github.com/dogabice" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 border-b border-white/25 transition-colors hover:border-[#E8A96B] hover:text-[#E8A96B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8A96B]">GitHub <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>
-              <a href="https://www.linkedin.com/in/dogabice" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 border-b border-white/25 transition-colors hover:border-[#E8A96B] hover:text-[#E8A96B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8A96B]">LinkedIn <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>
+          <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(13rem,.35fr)_minmax(0,1fr)] lg:gap-10">
+            <div className="flex items-start gap-2 pt-2 text-sm text-[#C9BEC4]"><span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[#5EA7A0]" aria-hidden="true" />{tr ? "Yeni ürün iş birliklerine açığım" : "Open to new product collaborations"}</div>
+            <nav aria-label={tr ? "Diğer bağlantılar" : "More ways to connect"} className="grid border-t border-[#E8A96B]/45 sm:grid-cols-3">
+              <a href="https://github.com/dogabice" target="_blank" rel="noopener noreferrer" className="group flex min-h-28 flex-col justify-between gap-5 border-b border-white/15 py-5 transition-colors hover:border-[#E8A96B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8A96B] sm:border-r sm:px-5 sm:first:pl-0">
+                <span className="flex items-center justify-between gap-3 text-[#E8A96B]"><CodeXml className="h-5 w-5" aria-hidden="true" /><ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" /></span>
+                <span><strong className="block text-xl font-medium tracking-tight text-[#F6EFE8]">GitHub</strong><small className="mt-1 block text-xs text-[#C9BEC4]">github.com/dogabice</small></span>
+              </a>
+              <a href="https://www.linkedin.com/in/dogabice" target="_blank" rel="noopener noreferrer" className="group flex min-h-28 flex-col justify-between gap-5 border-b border-white/15 py-5 transition-colors hover:border-[#E8A96B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8A96B] sm:border-r sm:px-5">
+                <span className="flex items-center justify-between gap-3 text-[#E8A96B]"><span className="text-lg font-bold leading-none" aria-hidden="true">in</span><ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" /></span>
+                <span><strong className="block text-xl font-medium tracking-tight text-[#F6EFE8]">LinkedIn</strong><small className="mt-1 block text-xs text-[#C9BEC4]">linkedin.com/in/dogabice</small></span>
+              </a>
+              <Link href="/card" className="group flex min-h-28 flex-col justify-between gap-5 border-b border-white/15 py-5 transition-colors hover:border-[#E8A96B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8A96B] sm:px-5 sm:last:pr-0">
+                <span className="flex items-center justify-between gap-3 text-[#E8A96B]"><ContactRound className="h-5 w-5" aria-hidden="true" /><ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" /></span>
+                <span><strong className="block text-xl font-medium tracking-tight text-[#F6EFE8]">{tr ? "Kartvizitim" : "My card"}</strong><small className="mt-1 block text-xs text-[#C9BEC4]">{tr ? "Tüm bağlantılarım" : "All my links"}</small></span>
+              </Link>
             </nav>
           </div>
 
