@@ -122,7 +122,7 @@ export default function Approach() {
     <section id="approach" className="continuous-section relative mx-auto max-w-7xl px-5 py-20 md:px-8 lg:px-10 lg:py-28" aria-labelledby="approach-heading">
       <div className="grid gap-7 border-t border-white/10 pt-7 md:grid-cols-[0.72fr_1.28fr] md:items-end">
         <div>
-          <p className="text-xs uppercase tracking-[.34em] text-[#5EA7A0]">02 · {tr ? "Çalışma biçimim" : "How I work"}</p>
+          <p className="text-xs uppercase tracking-[.34em] text-[#5EA7A0]">03 · {tr ? "Çalışma biçimim" : "How I work"}</p>
           <p className="mt-5 max-w-xs text-sm leading-7 text-[#B8AAB7]">{tr ? "Bir ürünün hikâyesi, ilk ekrandan önce başlar." : "A product story begins before its first screen."}</p>
         </div>
         <h2 id="approach-heading" className="max-w-4xl text-4xl font-semibold leading-[.97] tracking-[-.065em] md:text-6xl">

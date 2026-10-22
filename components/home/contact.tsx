@@ -1,57 +1,48 @@
 "use client";
 
-import Reveal from "@/components/ui/reveal";
-import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import Reveal from "@/components/ui/reveal";
 import { useLanguage } from "@/components/ui/language-provider";
+import PageIntro from "@/components/home/page-intro";
 
-export default function Contact() {
+export default function Contact({ standalone = false }: { standalone?: boolean }) {
   const { language } = useLanguage();
   const tr = language === "tr";
 
   return (
-    <section id="contact" className="relative px-5 pb-16 pt-2 md:px-8 lg:px-10 lg:pb-20 lg:pt-4">
+    <section id="contact" className={`relative px-5 py-16 md:px-8 lg:px-10 lg:py-20 ${standalone ? "contact-standalone" : ""}`}>
       <Reveal>
-        <div className="relative mx-auto max-w-7xl py-10 md:py-12 lg:py-16">
-          <div className="relative grid gap-12 lg:grid-cols-[minmax(0,1.18fr)_minmax(22rem,.62fr)] lg:items-end lg:gap-20">
-            <div>
-              <p className="text-xs uppercase tracking-[.34em] text-[#C75C7C]">05 · {tr ? "İletişim" : "Contact"}</p>
-              <h2 className="mt-5 max-w-4xl text-5xl font-semibold leading-[.94] tracking-[-.07em] text-[#E9DFD9] md:text-7xl">
-                {tr ? <>Birlikte <span className="font-serif font-normal italic text-[#E8A96B]">iyi bir ürün</span> çıkaralım.</> : <>Let’s build <span className="font-serif font-normal italic text-[#E8A96B]">something useful</span> together.</>}
-              </h2>
-              <p className="mt-8 max-w-2xl text-[17px] leading-8 text-[#C9BEC4]">
-                {tr ? "Yeni bir ürün fikri, mevcut bir deneyimde çözülmesi gereken bir problem veya birlikte çalışma ihtimali için yazabilirsin." : "Reach out about a new product idea, a problem in an existing experience or a chance to work together."}
-              </p>
-              <p className="mt-10 text-xs uppercase tracking-[.3em] text-white/45">Doğa Bice · İstanbul</p>
-            </div>
-            <div className="w-full text-[#D9D0CC] lg:mb-1">
-              <p className="mb-6 text-xs font-medium uppercase tracking-[.28em] text-[#E8A96B]">{tr ? "Bir merhaba bırak" : "Start a conversation"}</p>
-              <div className="border-t border-[#E8A96B]/55">
-                <a href="mailto:bicedoga@gmail.com" className="group grid grid-cols-[2rem_1fr_auto] items-center gap-3 border-b border-white/15 py-6 transition hover:border-[#E8A96B]/75"><span className="text-xs tracking-[.2em] text-[#E8A96B]">01</span><span><strong className="block text-lg font-medium text-[#E9DFD9] transition group-hover:text-[#E8A96B]">Email</strong><small className="mt-1.5 block text-sm text-white/50">bicedoga@gmail.com</small></span><ArrowUpRight className="h-5 w-5 text-[#E8A96B] transition group-hover:translate-x-1 group-hover:-translate-y-1" /></a>
-                <a href="https://github.com/dogabice" target="_blank" rel="noreferrer" className="group grid grid-cols-[2rem_1fr_auto] items-center gap-3 border-b border-white/15 py-6 transition hover:border-[#E8A96B]/75"><span className="text-xs tracking-[.2em] text-[#E8A96B]">02</span><span><strong className="block text-lg font-medium text-[#E9DFD9] transition group-hover:text-[#E8A96B]">GitHub</strong><small className="mt-1.5 block text-sm text-white/50">github.com/dogabice</small></span><ArrowUpRight className="h-5 w-5 text-[#E8A96B] transition group-hover:translate-x-1 group-hover:-translate-y-1" /></a>
-                <a href="https://www.linkedin.com/in/dogabice" target="_blank" rel="noreferrer" className="group grid grid-cols-[2rem_1fr_auto] items-center gap-3 border-b border-white/15 py-6 transition hover:border-[#E8A96B]/75"><span className="text-xs tracking-[.2em] text-[#E8A96B]">03</span><span><strong className="block text-lg font-medium text-[#E9DFD9] transition group-hover:text-[#E8A96B]">LinkedIn</strong><small className="mt-1.5 block text-sm text-white/50">linkedin.com/in/dogabice</small></span><ArrowUpRight className="h-5 w-5 text-[#E8A96B] transition group-hover:translate-x-1 group-hover:-translate-y-1" /></a>
-              </div>
-            </div>
+        <div className="mx-auto max-w-7xl">
+          <PageIntro
+            number="05"
+            label={tr ? "İletişim" : "Contact"}
+            title={tr ? <>Birlikte <span className="font-serif font-normal italic text-[#E8A96B]">iyi bir ürün</span> çıkaralım.</> : <>Let’s build <span className="font-serif font-normal italic text-[#E8A96B]">something useful</span> together.</>}
+            description={tr ? "Yeni bir fikir, geliştirilmesi gereken bir ürün veya birlikte çalışma ihtimali için bana doğrudan yazabilirsin." : "Have an idea, a product to improve or a reason to work together? Write to me directly."}
+            as={standalone ? "h1" : "h2"}
+          />
+
+          <a href="mailto:bicedoga@gmail.com" className="group mt-12 block border-y border-[#E8A96B]/65 py-7 text-[#F6EFE8] transition-colors hover:border-[#E8A96B] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E8A96B] md:mt-16 md:py-9">
+            <span className="text-[11px] font-semibold uppercase tracking-[.28em] text-[#E8A96B]">{tr ? "Doğrudan yaz" : "Email me directly"}</span>
+            <span className="mt-3 flex items-center justify-between gap-3">
+              <strong className="min-w-0 text-[clamp(1.35rem,6.2vw,2.1rem)] font-semibold tracking-[-.055em] transition-colors group-hover:text-[#E8A96B] md:text-[clamp(3rem,5.25vw,5.7rem)]">bicedoga@gmail.com</strong>
+              <ArrowUpRight className="h-7 w-7 shrink-0 text-[#E8A96B] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 md:h-10 md:w-10" aria-hidden="true" />
+            </span>
+          </a>
+
+          <div className="mt-8 flex flex-col gap-6 text-sm text-[#C9BEC4] sm:flex-row sm:items-center sm:justify-between">
+            <p className="flex items-center gap-2"><span className="h-2 w-2 rounded-full bg-[#5EA7A0]" aria-hidden="true" />{tr ? "Yeni ürün iş birliklerine açığım" : "Open to new product collaborations"}</p>
+            <nav aria-label={tr ? "Sosyal bağlantılar" : "Social links"} className="flex flex-wrap gap-x-7 gap-y-3">
+              <a href="https://github.com/dogabice" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 border-b border-white/25 transition-colors hover:border-[#E8A96B] hover:text-[#E8A96B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8A96B]">GitHub <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>
+              <a href="https://www.linkedin.com/in/dogabice" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-1.5 border-b border-white/25 transition-colors hover:border-[#E8A96B] hover:text-[#E8A96B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8A96B]">LinkedIn <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></a>
+            </nav>
           </div>
-          <div className="mt-16 grid gap-7 border-t border-white/15 pt-8 text-[15px] md:grid-cols-3 md:gap-10">
-            <div>
-              <p className="text-[10px] uppercase tracking-[.26em] text-[#E8A96B]">{tr ? "Müsaitlik" : "Availability"}</p>
-              <p className="mt-3 flex items-center gap-2 text-[#D9D0CC]"><span className="h-2 w-2 rounded-full bg-[#5EA7A0] shadow-[0_0_12px_rgba(94,167,160,.8)]" />{tr ? "Yeni ürün iş birliklerine açığım" : "Open to thoughtful product collaborations"}</p>
-            </div>
-            <div>
-              <p className="text-[10px] uppercase tracking-[.26em] text-[#E8A96B]">{tr ? "Odak" : "Focus"}</p>
-              <p className="mt-3 text-[#D9D0CC]">Product strategy · Mobile · AI systems</p>
-            </div>
-            <div>
-              <p className="text-[10px] uppercase tracking-[.26em] text-[#E8A96B]">{tr ? "Çalışma biçimi" : "Working mode"}</p>
-              <p className="mt-3 text-[#D9D0CC]">İstanbul · Remote friendly</p>
-            </div>
-          </div>
-          <div className="mt-16 flex flex-col gap-5 border-t border-[#E8A96B]/45 pt-6 text-[10px] font-medium uppercase tracking-[.26em] text-white/40 sm:flex-row sm:items-center sm:justify-between">
+
+          <footer className="mt-16 flex flex-col gap-5 border-t border-white/15 pt-6 text-[10px] font-medium uppercase tracking-[.26em] text-white/45 sm:flex-row sm:items-center sm:justify-between">
             <p>Doğa Bice · Product engineer</p>
             <p>© 2026 · İstanbul</p>
-            <Link href="/" className="group inline-flex items-center gap-2 transition hover:text-[#E8A96B]">{tr ? "Ana sayfaya dön" : "Back home"}<ArrowUpRight className="h-3.5 w-3.5 -rotate-45 transition group-hover:-translate-y-1" /></Link>
-          </div>
+            <Link href="/" className="inline-flex min-h-10 items-center gap-2 transition-colors hover:text-[#E8A96B] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E8A96B]">{tr ? "Ana sayfaya dön" : "Back home"}<ArrowUpRight className="h-3.5 w-3.5 -rotate-45" aria-hidden="true" /></Link>
+          </footer>
         </div>
       </Reveal>
     </section>

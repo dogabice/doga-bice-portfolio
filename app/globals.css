@@ -126,75 +126,6 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
 }
 
-.hero-satin {
-  background:
-    radial-gradient(ellipse at 50% 42%, rgb(118 38 74 / .23), transparent 60%),
-    linear-gradient(135deg, rgb(27 12 24 / .25), transparent 47%, rgb(97 33 61 / .14));
-  mask-image: linear-gradient(to bottom, transparent, black 8%, black 88%, transparent);
-}
-
-.hero-satin::before,
-.hero-satin::after {
-  content: "";
-  position: absolute;
-  inset: -30%;
-  filter: blur(24px);
-  mix-blend-mode: screen;
-  will-change: transform;
-}
-
-.hero-satin::before {
-  opacity: .55;
-  background: linear-gradient(
-    108deg,
-    transparent 17%,
-    rgb(202 96 135 / .04) 28%,
-    rgb(255 199 177 / .14) 32%,
-    rgb(98 35 64 / .05) 37%,
-    transparent 44%,
-    rgb(232 169 107 / .08) 54%,
-    rgb(255 218 195 / .18) 58%,
-    transparent 65%
-  );
-  transform: rotate(-7deg) skewX(-9deg);
-  animation: satin-wave-a 17s ease-in-out infinite alternate;
-}
-
-.hero-satin::after {
-  opacity: .42;
-  background: linear-gradient(
-    73deg,
-    transparent 22%,
-    rgb(188 69 118 / .12) 38%,
-    rgb(255 220 201 / .13) 42%,
-    transparent 48%,
-    rgb(166 70 107 / .09) 60%,
-    rgb(255 197 162 / .13) 64%,
-    transparent 70%
-  );
-  transform: rotate(9deg) skewX(8deg);
-  animation: satin-wave-b 21s ease-in-out infinite alternate;
-}
-
-@media (max-width: 639px) {
-  #hero-heading { font-size: clamp(2.4rem, 11.2vw, 3rem); }
-}
-
-@keyframes satin-wave-a {
-  from { transform: translate3d(-3%, -1%, 0) rotate(-7deg) skewX(-9deg) scaleX(.97); }
-  to { transform: translate3d(4%, 2%, 0) rotate(-3deg) skewX(-5deg) scaleX(1.06); }
-}
-
-@keyframes satin-wave-b {
-  from { transform: translate3d(3%, 2%, 0) rotate(9deg) skewX(8deg) scaleX(1.04); }
-  to { transform: translate3d(-4%, -2%, 0) rotate(5deg) skewX(3deg) scaleX(.96); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-satin::before,
-  .hero-satin::after { animation: none; will-change: auto; }
-}
-
 /* Every section lives on the same ambient canvas. The changing rule lengths
    create scroll landmarks without breaking the background into slabs. */
 .continuous-section::before,
@@ -241,6 +172,10 @@ body::before {
     align-content: center;
   }
 
+  #contact.contact-standalone {
+    display: block;
+  }
+
   /* The project catalogue is intentionally taller than a viewport; snap only
      marks its entrance while preserving normal reading through its content. */
   #work {
@@ -248,159 +183,11 @@ body::before {
   }
 }
 
-/* Let the complete hero composition fit shorter desktop viewports while
-   keeping the headline prominent and its lower ornament unobtrusive. */
-@media (min-width: 1024px) and (max-height: 900px) {
-  #home {
-    min-height: calc(100svh - 8rem) !important;
-    padding-top: 1.5rem !important;
-    padding-bottom: 1.5rem !important;
-  }
-
-  #hero-heading {
-    font-size: clamp(4.25rem, 5.4vw, 5.25rem) !important;
-  }
-
-  #home .hero-intro { margin-top: 0 !important; }
-  #home .hero-summary { margin-top: .85rem !important; line-height: 1.5; }
-  #home .hero-actions { margin-top: 1rem !important; }
-  #home .hero-card-stage { margin-top: 1rem !important; }
-  #home .hero-card { max-width: 450px; }
-  #home .hero-footer { display: none; }
-
-  #contact > div > div {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-
-  #contact .mt-16 {
-    margin-top: 2rem;
-  }
-}
-
-@media (min-width: 1024px) and (max-height: 760px) {
-  #hero-heading { font-size: clamp(3.8rem, 5vw, 4.4rem) !important; }
-  #home .hero-card { max-width: 360px; }
-  #home .hero-intro { margin-top: .5rem !important; }
-  #home .hero-summary { margin-top: .5rem !important; }
-  #home .hero-actions { margin-top: .6rem !important; }
-  #home .hero-card-stage { margin-top: .5rem !important; }
-}
-
-.hero-aurora {
-  opacity: 0.76;
-  background:
-    radial-gradient(circle at 30% 42%, rgb(176 45 83 / 0.28), transparent 24%),
-    radial-gradient(circle at 77% 48%, rgb(232 169 107 / 0.14), transparent 19%),
-    radial-gradient(circle at 62% 82%, rgb(124 36 76 / 0.27), transparent 26%);
-  filter: blur(18px);
-  animation: hero-aurora-drift 17s ease-in-out infinite alternate;
-}
-
-.hero-pointer-glow {
-  --pointer-x: 66%;
-  --pointer-y: 46%;
-  background: radial-gradient(circle 17rem at var(--pointer-x) var(--pointer-y), rgb(232 169 107 / 0.11), transparent 70%);
-  transition: background-position 180ms ease-out;
-}
-
-.hero-business-card {
-  filter: saturate(0.86) contrast(0.96);
-  box-shadow: 0 58px 120px -58px rgb(0 0 0 / 0.96);
-}
-
-.hero-business-card::after {
-  content: "";
-  position: absolute;
-  inset: 11% -8% -18%;
-  z-index: -1;
-  background: radial-gradient(ellipse, rgb(0 0 0 / .58), transparent 68%);
-  filter: blur(22px);
-  transform: translateZ(-30px);
-}
-
-.connect-link {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  border: 1px solid rgb(232 169 107 / .28);
-  border-radius: 1rem;
-  padding: 1rem 1.125rem;
-  color: #f6efe8;
-  background: linear-gradient(115deg, rgb(255 255 255 / .07), rgb(255 255 255 / .025));
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
-}
-
-.connect-link:hover {
-  transform: translateX(5px);
-  border-color: rgb(232 169 107 / .75);
-  background: rgb(232 169 107 / .12);
-}
-
-.connect-link span {
-  display: grid;
-  gap: .2rem;
-}
-
-.connect-link strong { font-size: .95rem; font-weight: 600; }
-.connect-link small { color: rgb(217 205 212 / .72); font-size: .75rem; }
-
-.connect-sheet > a {
-  border-color: transparent !important;
-  background: rgb(255 255 255 / .075) !important;
-}
-
-.connect-sheet > div > a {
-  border: 0 !important;
-  outline: 0 !important;
-  background: rgb(255 255 255 / .075) !important;
-}
-
-.connect-sheet > a:hover {
-  background: rgb(255 255 255 / .14) !important;
-}
-
-.connect-sheet > div > a:hover {
-  background: rgb(255 255 255 / .14) !important;
-}
-
-.connect-sheet > a > svg:last-child,
-.connect-sheet > div > a > svg:last-child {
-  display: none;
-}
-
-.connect-sheet > a::after,
-.connect-sheet > div > a::after {
-  content: "→";
-  display: grid;
-  height: 2.5rem;
-  width: 2.5rem;
-  flex: none;
-  place-items: center;
-  border-radius: 999px;
-  background: rgb(255 255 255 / .075);
-  color: #e8a96b;
-  font-size: 1.3rem;
-  line-height: 1;
-  transition: transform 180ms ease, background 180ms ease;
-}
-
-.connect-sheet > a:hover::after,
-.connect-sheet > div > a:hover::after {
-  transform: translateX(3px);
-  background: rgb(232 169 107 / .18);
-}
-
 .ambient-pointer-light {
   background: radial-gradient(circle 21rem at var(--ambient-pointer-x) var(--ambient-pointer-y), rgb(232 169 107 / 0.10), transparent 72%);
   transition: background 220ms ease-out;
 }
 
-
-@keyframes hero-aurora-drift {
-  from { transform: translate3d(-2%, -1%, 0) scale(1); }
-  to { transform: translate3d(4%, 3%, 0) scale(1.08); }
-}
 
 .apple-glass {
   isolation: isolate;

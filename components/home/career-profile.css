@@ -1,0 +1,135 @@
+.career-page { position: relative; color: var(--foreground); }
+
+.career-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  height: 2px;
+  transform: translateX(-50%);
+  background: rgb(232 169 107 / .78);
+  box-shadow: 0 1px 18px rgb(232 169 107 / .18);
+}
+
+.career-intro { padding-block: 4rem 5rem; }
+
+.career-chapter {
+  margin-bottom: clamp(4rem, 6vw, 6rem);
+  border-top: 1px solid rgb(232 169 107 / .65);
+}
+
+.career-chapter-label {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding-block: 1.75rem 2rem;
+}
+
+.career-chapter-label span {
+  color: var(--chart-2);
+  font-size: .72rem;
+  font-weight: 650;
+  letter-spacing: .28em;
+}
+
+.career-chapter-label h2 {
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -.06em;
+}
+
+.career-entry {
+  display: grid;
+  grid-template-columns: minmax(10rem, .27fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  padding-block: clamp(2rem, 3.5vw, 3.3rem);
+  border-top: 1px solid rgb(246 239 232 / .14);
+}
+
+.career-period {
+  padding-top: .35rem;
+  color: var(--chart-2);
+  font-size: .84rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.career-entry h3 {
+  font-size: clamp(1.8rem, 2.8vw, 2.65rem);
+  font-weight: 630;
+  line-height: 1.08;
+  letter-spacing: -.055em;
+}
+
+.career-role {
+  margin-top: .6rem;
+  color: var(--foreground);
+  font-size: 1.03rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.career-summary {
+  max-width: 44rem;
+  margin-top: 1.45rem;
+  color: rgb(246 239 232 / .74);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.career-summary a {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-decoration-color: var(--chart-2);
+  text-underline-offset: .22em;
+}
+
+.career-summary a:hover { color: var(--chart-2); }
+.career-summary a:focus-visible { outline: 2px solid var(--chart-2); outline-offset: 3px; }
+
+.career-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  border-top: 1px solid rgb(232 169 107 / .65);
+  padding-block: 3rem;
+}
+
+.career-footer p {
+  font-size: clamp(1.7rem, 3.2vw, 3rem);
+  font-weight: 620;
+  letter-spacing: -.06em;
+}
+
+.career-footer a {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--chart-2);
+  color: var(--foreground);
+  font-size: .9rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.career-footer a:hover { color: var(--chart-2); }
+.career-footer a:focus-visible { outline: 2px solid var(--chart-2); outline-offset: 5px; }
+
+@media (min-width: 1024px) {
+  .career-intro { padding-block: 5rem 5.5rem; }
+}
+
+@media (max-width: 639px) {
+  .career-intro { padding-block: 4rem 4.5rem; }
+  .career-chapter { margin-bottom: 3.5rem; }
+  .career-chapter-label { padding-block: 1.5rem 1.75rem; }
+  .career-entry { display: block; padding-block: 1.8rem 2.2rem; }
+  .career-period { margin-bottom: .9rem; padding-top: 0; }
+  .career-entry h3 { font-size: 1.8rem; }
+  .career-summary { margin-top: 1.2rem; font-size: .97rem; }
+  .career-footer { flex-direction: column; align-items: flex-start; padding-block: 2.5rem; }
+}
